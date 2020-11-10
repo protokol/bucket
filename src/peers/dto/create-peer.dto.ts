@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { IsInt, IsString } from "class-validator";
 
 export class CreatePeerDto {
@@ -8,5 +9,6 @@ export class CreatePeerDto {
 	readonly port: number;
 
 	@IsString()
+	@Exclude({ toPlainOnly: true })
 	readonly network: string;
 }

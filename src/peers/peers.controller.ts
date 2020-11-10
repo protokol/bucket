@@ -1,4 +1,14 @@
-import { Body, Controller, DefaultValuePipe, Get, Param, Post, UseInterceptors } from "@nestjs/common";
+import {
+	Body,
+	ClassSerializerInterceptor,
+	Controller,
+	DefaultValuePipe,
+	Get,
+	Param,
+	Post,
+	UseInterceptors,
+	ValidationPipe,
+} from "@nestjs/common";
 import { TransformInterceptor } from "src/common/transform.interceptor";
 import { CreatePeerDto } from "./dto/create-peer.dto";
 import { Peer } from "./peers.interface";
@@ -9,12 +19,12 @@ export class PeersController {
 	constructor(private readonly peersService: PeersService) {}
 
 	@Post()
-	async create(@Body() createPeerDto: CreatePeerDto) {
+	async create(@Body(new ValidationPipe({ transform: true })) createPeerDto: CreatePeerDto) {
 		this.peersService.create(createPeerDto);
 	}
 
 	@Get()
-	@UseInterceptors(TransformInterceptor)
+	@UseInterceptors(TransformInterceptor, ClassSerializerInterceptor)
 	async findAll(): Promise<Peer[]> {
 		return this.peersService.findAll();
 	}
