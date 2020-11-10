@@ -1,7 +1,7 @@
 {
   "name": "@protokol/bucket",
   "version": "0.0.1",
-  "description": "",
+  "description": "Protokol Bucket",
   "author": "Kristjan Košič <kristjan@protokol.com>",
   "private": true,
   "license": "UNLICENSED",
