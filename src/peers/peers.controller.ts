@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { StringDecoder } from "string_decoder";
 import { CreatePeerDto } from "./dto/create-peer.dto";
 import { Peer } from "./peers.interface";
 import { PeersService } from "./peers.service";
@@ -17,11 +18,11 @@ export class PeersController {
 		return this.peersService.findAll();
 	}
 
-	@Get(":id")
-	findOne(
-		@Param("id", new ParseIntPipe())
-		id: number,
-	) {
-		// get by ID logic
+	@Get(":network")
+	async findMany(
+		@Param("network", new DefaultValuePipe("core"))
+		network: string,
+	): Promise<Peer[]> {
+		return this.peersService.findMany(network);
 	}
 }

@@ -9,7 +9,6 @@ async function bootstrap() {
 		.setTitle("Protokol Bucket")
 		.setDescription("Decentralized Temporary Storage Engine")
 		.setVersion("1.0")
-		.addTag("peers")
 		.build();
 	const document = SwaggerModule.createDocument(app, options);
 	SwaggerModule.setup("docs", app, document);
