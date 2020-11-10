@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: "serve-data-prod",
+			name: "bucket-server",
 			script: "dist/main.js",
 
 			// Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
