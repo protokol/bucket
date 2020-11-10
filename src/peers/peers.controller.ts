@@ -1,4 +1,5 @@
-import { Body, Controller, DefaultValuePipe, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, DefaultValuePipe, Get, Param, Post, UseInterceptors } from "@nestjs/common";
+import { TransformInterceptor } from "src/common/transform.interceptor";
 import { CreatePeerDto } from "./dto/create-peer.dto";
 import { Peer } from "./peers.interface";
 import { PeersService } from "./peers.service";
@@ -13,6 +14,7 @@ export class PeersController {
 	}
 
 	@Get()
+	@UseInterceptors(TransformInterceptor)
 	async findAll(): Promise<Peer[]> {
 		return this.peersService.findAll();
 	}
