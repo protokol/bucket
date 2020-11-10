@@ -1,4 +1,4 @@
-import { Body, Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, DefaultValuePipe, Get, Param, Post } from "@nestjs/common";
 import { CreatePeerDto } from "./dto/create-peer.dto";
 import { Peer } from "./peers.interface";
 import { PeersService } from "./peers.service";
